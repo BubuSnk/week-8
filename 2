@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int indexof(char *haystack,char c){
+	for(int i=0;i<strlen(haystack);i++){
+		if(c==haystack[i]){
+			return i;
+		}
+	}
+	return -1;
+}
+void convert(char *s){
+	char a[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	char *morse[]={
+        	    ".-",
+        	    "-...",
+        	    "-.-.",
+        	    "-..",
+        	    ".",
+        	    "..-.",
+        	    "--.",
+        	    "....",
+        	    "..",
+        	    ".---",
+        	    "-.-",
+        	    ".-..",
+        	    "--",
+        	    "-.",
+        	    "---",
+        	    ".--.",
+        	    "--.-",
+        	    ".-.",
+        	    "...",
+        	    "-",
+        	    "..-",
+        	    "...-",
+        	    ".--",
+        	    "-..-",
+        	    "-.--",
+        	    "--..",
+        	    "-----",
+        	    ".----",
+        	    "..---",
+        	    "...--",
+        	    "....-",
+        	    ".....",
+        	    "-....",
+        	    "--...",
+        	    "---..",
+        	    "----."
+    };
+	for(int i=0;i<strlen(s);i++){
+		int pos = indexof( a,(char) toupper(s[i]) );
+		if (pos !=-1){
+			printf("%s",morse[pos]);
+		}	
+	}
+}
+int main(){
+	char s[]="profunissogood";
+	convert(s);
+	return 0;
+}
